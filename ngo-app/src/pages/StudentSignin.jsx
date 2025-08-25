@@ -1,11 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import StudentDashboard from './StudentDashboard';
 
-const SignIn = () => {
+const StudentSignin = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add authentication logic here if needed
+    navigate('/StudentDash');
+  };
+
   return (
     <div className="container mx-auto px-6 py-8">
       <h1 className="text-3xl font-bold text-center text-pink-500">Student Login</h1>
-      <form className="mt-8 max-w-md mx-auto">
+      <form className="mt-8 max-w-md mx-auto" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-600">Email</label>
           <input type="email" className="w-full px-4 py-2 border rounded-lg" />
@@ -23,4 +32,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default StudentSignin;

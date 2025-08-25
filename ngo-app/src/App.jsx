@@ -14,6 +14,9 @@ import SignUp from './pages/SignUp';
 // import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 // import Chatbot from './components/Chatbot';
+import EventIntrested from './pages/EventIntrested';
+import StudentDashboard from './pages/StudentDashboard';
+import AdminDash from './pages/AdminDash';
 
 const App = () => {
   return (
@@ -28,8 +31,11 @@ const App = () => {
             {/* <Route path="/contact" element={<Contact />} /> */}
             {/* <Route path="/donate" element={<Donate />} /> */}
             <Route path="/register" element={<EventRegistration />} />
+            <Route path="/intrested" element={<EventIntrested />} />            
             <Route path="/signin" element={<SignIn />} />
+            <Route path="/AdminDash" element={<AdminDash />} />
             <Route path="/StudentSignin" element={<StudentSignin />} />
+            <Route path="/StudentDash" element={<StudentDashboard />} />
             <Route path="/signup" element={<SignUp />} />
             {/* <Route path="/dashboard" element={<Dashboard />} /> */}
             <Route path="*" element={<NotFound />} />
