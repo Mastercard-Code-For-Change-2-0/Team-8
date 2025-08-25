@@ -2,7 +2,7 @@ const { connect } = require("../Services/sqlservice");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-
+const{encrypt,decrypt} = require("../encryptionModule");
 const SALT_ROUNDS = 10;
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -26,7 +26,8 @@ async function handleRegisterUser(req, res) {
   }
 
   const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
-  const hashedname = await bcrypt.hash(name, SALT_ROUNDS);
+  const encryptedname = encrypt(name);
+  const encryptedphone = encrypt(phone);
 
   try {
     const query =
@@ -34,10 +35,10 @@ async function handleRegisterUser(req, res) {
     connection.query(
       query,
       [
-        hashedname,
+        encryptedname,
         email,
         hashedPassword,
-        phone,
+        encryptedphone,
         college,
         grad_year,
         curr_year,
@@ -62,10 +63,12 @@ async function handleRegisterUser(req, res) {
             }
           }
         );
+        
+        const decryptname = decrypt(encryptedname);
 
         const payload = {
           id: user.id,
-          name: name,
+          name: decryptname,
           email: email,
         };
 
@@ -105,9 +108,11 @@ async function handleLoginUser(req, res) {
           return res.status(401).json({ message: "Invalid credentials" });
         }
 
+        const decryptname = decrypt(user.name);
+
         const payload = {
           id: user.id,
-          name: user.name,
+          name: user.decryptname,
           email: user.email,
         };
 

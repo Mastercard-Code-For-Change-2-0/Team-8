@@ -2,7 +2,6 @@ const bcypt = require('bcrypt');
 const {connect} = require('../Services/sqlservice');
 const jwt = require('jsonwebtoken');
 const config = require('../config.js');
-const { param } = require('../app');
 
 const connection = connect();
 
