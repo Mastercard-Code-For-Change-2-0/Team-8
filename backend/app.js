@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 require('dotenv').config();
 const userRoutes = require('./Routes/userRoutes');
+const adminRoutes = require('./Routes/adminRoutes');
 
 app.use(cors());
 app.use(express.json());
@@ -15,5 +16,6 @@ app.listen(port, () => {
 });
 
 app.use('/api/users', userRoutes);
+app.use('/api/admin', adminRoutes);
 
 module.exports = app;
