@@ -18,6 +18,7 @@ import EventIntrested from './pages/EventIntrested';
 import StudentDashboard from './pages/StudentDashboard';
 import AdminDash from './pages/AdminDash';
 import Addevent from './pages/Addevent';
+import EventRegister from './pages/EventRegister';
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
             <Route path="/StudentSignin" element={<StudentSignin />} />
             <Route path="/StudentDash" element={<StudentDashboard />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/eventregister" element={<EventRegister />} />
             {/* <Route path="/dashboard" element={<Dashboard />} /> */}
             <Route path="*" element={<NotFound />} />
           </Routes>
