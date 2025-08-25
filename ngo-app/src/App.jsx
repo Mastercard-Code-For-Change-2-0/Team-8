@@ -3,16 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import About from './pages/About';
+// import About from './pages/About';
 import Events from './pages/Events';
-import Contact from './pages/Contact';
-import Donate from './pages/Donate';
+// import Contact from './pages/Contact';
+// import Donate from './pages/Donate';
 import EventRegistration from './pages/EventRegistration';
 import SignIn from './pages/SignIn';
+import StudentSignin from './pages/StudentSignin';
 import SignUp from './pages/SignUp';
-import Dashboard from './pages/Dashboard';
+// import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
-import Chatbot from './components/Chatbot';
+// import Chatbot from './components/Chatbot';
 
 const App = () => {
   return (
@@ -22,18 +23,19 @@ const App = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            {/* <Route path="/about" element={<About />} /> */}
             <Route path="/events" element={<Events />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/donate" element={<Donate />} />
+            {/* <Route path="/contact" element={<Contact />} /> */}
+            {/* <Route path="/donate" element={<Donate />} /> */}
             <Route path="/register" element={<EventRegistration />} />
             <Route path="/signin" element={<SignIn />} />
+            <Route path="/StudentSignin" element={<StudentSignin />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            {/* <Route path="/dashboard" element={<Dashboard />} /> */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
-        <Chatbot />
+        {/* <Chatbot /> */}
         <Footer />
       </div>
     </Router>

@@ -37,12 +37,7 @@ const Home = () => {
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <h1 className="text-5xl font-bold drop-shadow-md">Making a Difference, Together</h1>
           <p className="mt-4 text-xl max-w-2xl drop-shadow-md">Join our mission to bring hope and support to communities in need.</p>
-          <Link
-            to="/donate"
-            className="mt-8 bg-pink-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-pink-600 transition"
-          >
-            Donate Now
-          </Link>
+          
         </div>
       </section>
 
@@ -52,9 +47,7 @@ const Home = () => {
         <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
           We are a passionate team dedicated to creating lasting change through comprehensive programs in education, healthcare, and community support. Our goal is to empower individuals and build a brighter, more equitable future for everyone.
         </p>
-        <Link to="/about" className="mt-6 inline-block text-pink-500 font-semibold hover:underline">
-          Learn More About Us →
-        </Link>
+        
       </section>
 
       {/* Statistics Section */}
