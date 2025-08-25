@@ -7,7 +7,7 @@ const AdminDash = () => {
       {/* Add Event and Download CSV File buttons at top right below navbar */}
       <div className="flex justify-end mb-6 space-x-4">
         <Link
-          to="/registered"
+          to="/addevent"
           className="bg-pink-500 text-white px-6 py-2 rounded-full shadow hover:bg-pink-600 transition"
         >
           Add Event

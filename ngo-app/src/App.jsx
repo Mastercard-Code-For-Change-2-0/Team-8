@@ -17,11 +17,12 @@ import NotFound from './pages/NotFound';
 import EventIntrested from './pages/EventIntrested';
 import StudentDashboard from './pages/StudentDashboard';
 import AdminDash from './pages/AdminDash';
+import Addevent from './pages/Addevent';
 
 const App = () => {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-light-pink">
+      <div className="flex flex-col min-h-screen ">
         <Navbar />
         <main className="flex-grow">
           <Routes>
@@ -33,6 +34,7 @@ const App = () => {
             <Route path="/register" element={<EventRegistration />} />
             <Route path="/intrested" element={<EventIntrested />} />            
             <Route path="/signin" element={<SignIn />} />
+            <Route path="/addevent" element={<Addevent />} />
             <Route path="/AdminDash" element={<AdminDash />} />
             <Route path="/StudentSignin" element={<StudentSignin />} />
             <Route path="/StudentDash" element={<StudentDashboard />} />
