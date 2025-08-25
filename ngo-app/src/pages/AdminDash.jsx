@@ -4,6 +4,41 @@ import axios from 'axios';
 
 
 const AdminDash = () => {
+    const handleDownloadCSV = async () => {
+  try {
+    const res = await fetch("/api/leads");
+    const leads = await res.json();
+
+    if (leads.length === 0) {
+      alert("No leads found in database!");
+      return;
+    }
+
+    const headers = ["Emailid","Event Name"];
+    const rows = leads.map((lead) => [
+      lead.student_email,
+      lead.title,
+      lead.status
+      //lead.email,
+      //lead.phone,
+    ]);
+
+    let csvContent =
+      "data:text/csv;charset=utf-8," +
+      [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "leads.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch (error) {
+    console.error("Error fetching leads:", error);
+  }
+};
+
 
   const [events, setEvents] = React.useState([]);
 
@@ -32,12 +67,12 @@ const AdminDash = () => {
         >
           Add Event
         </Link>
-        <Link
-          to="/download-csv"
-          className="bg-green-500 text-white px-6 py-2 rounded-full shadow hover:bg-green-600 transition"
-        >
-          Download CSV File
-        </Link>
+        <button
+        onClick={handleDownloadCSV}
+        className="bg-green-600 text-white px-4 py-2 rounded"
+      >
+        Download Leads CSV
+      </button>
       </div>
       <h1 className="text-5xl font-extrabold text-center text-pink-600 mb-4 tracking-wide drop-shadow">
         Admin Dashboard

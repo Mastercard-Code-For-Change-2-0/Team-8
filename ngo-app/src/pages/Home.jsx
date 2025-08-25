@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
+import heroImage from '../assets/heroImage.png'; // Replace with your actual image path
 
 // A reusable component for the animated statistics
 const Statistic = ({ number, suffix, text }) => {
@@ -25,18 +26,18 @@ const Statistic = ({ number, suffix, text }) => {
 
 const Home = () => {
   return (
-    <div className="bg-light-pink">
+    <div className="">
       {/* Hero Section */}
       <section className="relative text-center text-white">
         <img
-          src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=2070&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // Replace with your hero image URL
+          src={heroImage} // Replace with your hero image URL
           alt="Helping Hands"
-          className="w-full h-96 object-cover"
+          className="w-full h-96 object-contain"
         />
         <div className="absolute inset-0 bg-black opacity-40"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <h1 className="text-5xl font-bold drop-shadow-md">Making a Difference, Together</h1>
-          <p className="mt-4 text-xl max-w-2xl drop-shadow-md">Join our mission to bring hope and support to communities in need.</p>
+          <h1 className="text-5xl font-bold drop-shadow-md">We empower women to</h1>
+          <p className="mt-4 text-xl max-w-2xl drop-shadow-md">rise to leadership</p>
           
         </div>
       </section>
@@ -65,22 +66,22 @@ const Home = () => {
 
       {/* What We Do Section */}
       <section className="container mx-auto px-6 py-16">
-        <h2 className="text-4xl font-bold text-center text-gray-800">What We Do</h2>
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="text-center">
-            <h3 className="text-2xl font-semibold text-pink-500">Education</h3>
-            <p className="mt-2 text-gray-600">Providing access to quality education for underprivileged children.</p>
-          </div>
-          <div className="text-center">
-            <h3 className="text-2xl font-semibold text-pink-500">Healthcare</h3>
-            <p className="mt-2 text-gray-600">Offering free medical camps and healthcare services to remote areas.</p>
-          </div>
-          <div className="text-center">
-            <h3 className="text-2xl font-semibold text-pink-500">Community Support</h3>
-            <p className="mt-2 text-gray-600">Running food drives and support programs for families in need.</p>
-          </div>
-        </div>
-      </section>
+  <h2 className="text-4xl font-bold text-center text-gray-800">What We Do</h2>
+  <div className="mt-10 grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div className="text-center">
+      <h3 className="text-2xl font-semibold text-pink-500">Science</h3>
+    </div>
+    <div className="text-center">
+      <h3 className="text-2xl font-semibold text-pink-500">Technology</h3>
+    </div>
+    <div className="text-center">
+      <h3 className="text-2xl font-semibold text-pink-500">Engineering</h3>
+  </div>
+    <div className="text-center">
+      <h3 className="text-2xl font-semibold text-pink-500">Mathematics</h3>
+    </div>
+  </div>
+</section>
     </div>
   );
 };
