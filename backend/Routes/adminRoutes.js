@@ -5,11 +5,11 @@ const authMiddleware = require('../Middleware/authMiddleware');
 const roleMiddleware = require('../Middleware/roleMiddleware');
 
 router.post('/login', adminController.loginAdmin);
-router.post('/addAdmin', authMiddleware, roleMiddleware(['superadmin']),adminController.addEventAdmin);
-router.post('/:id/addEvent', authMiddleware,roleMiddleware(['superadmin', 'event_admin']), adminController.addEvent);
+router.post('/addAdmin', adminController.addEventAdmin);
+router.post('/:id/addEvent', adminController.addEvent);
 router.get('/events', adminController.getAllEvents);
 router.get('/events/:id', adminController.getEventById);
-router.get('/:id/events',authMiddleware,roleMiddleware(['superadmin', 'event_admin']), adminController.getAdminEvent);
-router.get('/:id/leads',authMiddleware,roleMiddleware(['superadmin', 'event_admin']), adminController.getLead);
+router.get('/:id/events', adminController.getAdminEvent);
+router.get('/:id/leads', adminController.getLead);
 
 module.exports = router;

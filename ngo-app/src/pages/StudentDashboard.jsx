@@ -1,15 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const StudentDashboard = () => {
-//Login from backend to give the events the student has registered for
+  const [events, setEvents] = React.useState([]);
+
+  const fetchEvents = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/users/participatedEvents/1"
+      );
+      setEvents(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  React.useEffect(() => {
+    fetchEvents();
+  });
 
   return (
     <div className="container mx-auto px-6 py-8">
-      {/* Registered button at top right below navbar */}
-      <div className="flex justify-end mb-6">
-        
-      </div>
+      <div className="flex justify-end mb-6"></div>
       <h1 className="text-5xl font-extrabold text-center text-pink-600 mb-4 tracking-wide drop-shadow">
         Student Dashboard
       </h1>
@@ -17,14 +30,17 @@ const StudentDashboard = () => {
         Events
       </h2>
       <div className="mt-8">
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold text-pink-500">Charity Gala</h2>
-                <p className="mt-2 text-gray-600">Join us for a night of giving and fun.</p>
-                {/* <Link to="/intrested" className="text-pink-500 hover:underline mt-4 inline-block">Intrested</Link> */}
-              </div>
-            </div>
-      
-      
+        {events.map((event) => (
+          <div
+            className="bg-white p-6 rounded-lg shadow-md mb-4"
+            key={event.id}
+          >
+            <h2 className="text-2xl font-bold text-pink-500">{event.title}</h2>
+            <p className="mt-2 text-gray-600">{event.description}</p>
+            <p className="mt-2 text-gray-600">Status: {event.status}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

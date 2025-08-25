@@ -6,7 +6,6 @@ const EventRegister = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add authentication logic here if needed
     navigate('/StudentDash');
   };
 

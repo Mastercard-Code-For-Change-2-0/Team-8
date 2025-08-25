@@ -1,7 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 const AdminDash = () => {
+
+  const [events, setEvents] = React.useState([]);
+
+  const fetchEvents = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/admin/1/events"
+      );
+      setEvents(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  React.useEffect(() => {
+    fetchEvents();
+  });
+
   return (
     <div className="container mx-auto px-6 py-8">
       {/* Add Event and Download CSV File buttons at top right below navbar */}
@@ -26,25 +46,15 @@ const AdminDash = () => {
         Events
       </h2>
       <div className="mt-8">
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold text-pink-500">Charity Gala</h2>
-          <p className="mt-2 text-gray-600">Join us for a night of giving and fun.</p>
-          <Link to="/intrested" className="text-pink-500 hover:underline mt-4 inline-block">Intrested</Link>
-        </div>
-      </div>
-      <div className="mt-8">
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold text-pink-500">Charity Gala</h2>
-          <p className="mt-2 text-gray-600">Join us for a night of giving and fun.</p>
-          <Link to="/intrested" className="text-pink-500 hover:underline mt-4 inline-block">Intrested</Link>
-        </div>
-      </div>
-      <div className="mt-8">
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold text-pink-500">Charity Gala</h2>
-          <p className="mt-2 text-gray-600">Join us for a night of giving and fun.</p>
-          <Link to="/intrested" className="text-pink-500 hover:underline mt-4 inline-block">Intrested</Link>
-        </div>
+        {events.map((event) => (
+          <div
+            className="bg-white p-6 rounded-lg shadow-md mb-4"
+            key={event.id}
+          >
+            <h2 className="text-2xl font-bold text-pink-500">{event.title}</h2>
+            <p className="mt-2 text-gray-600">{event.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

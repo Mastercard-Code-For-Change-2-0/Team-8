@@ -153,6 +153,7 @@ async function participatedEvents(req, res) {
       return res.status(404).json({ message: "User not found" });
     }
     const useremail = results[0].email;
+    
     const query2 =
       "Select e.title, e.description, e.start_date, e.end_date, e.venue, l.status from event e inner join hackathon_portal.lead l on e.event_id = l.event_id where l.student_email = ?";
     connection.query(query2, [useremail], (err, results) => {
