@@ -6,21 +6,19 @@ import axios from 'axios';
 const AdminDash = () => {
     const handleDownloadCSV = async () => {
   try {
-    const res = await fetch("/api/leads");
-    const leads = await res.json();
+    const res = await axios.get(
+      "http://localhost:3000/api/admin/1/leads");
+    const leads = await res.data;
 
     if (leads.length === 0) {
       alert("No leads found in database!");
       return;
     }
-
-    const headers = ["Emailid","Event Name"];
+    const headers = ["Student Email", "Event Title", "Status"];
     const rows = leads.map((lead) => [
       lead.student_email,
       lead.title,
       lead.status
-      //lead.email,
-      //lead.phone,
     ]);
 
     let csvContent =
@@ -40,7 +38,7 @@ const AdminDash = () => {
 };
 
 
-  const [events, setEvents] = React.useState([]);
+  const [eve, setEvents] = React.useState([]);
 
   const fetchEvents = async () => {
     try {
@@ -81,7 +79,7 @@ const AdminDash = () => {
         Events
       </h2>
       <div className="mt-8">
-        {events.map((event) => (
+        {eve.map((event) => (
           <div
             className="bg-white p-6 rounded-lg shadow-md mb-4"
             key={event.id}

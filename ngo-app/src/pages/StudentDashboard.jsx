@@ -1,9 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 const StudentDashboard = () => {
   const [events, setEvents] = React.useState([]);
+
+  const [search, setSearch] = useState('');
+
+  const filteredEvents = events.filter(event =>
+    event.title.toLowerCase().includes(search.toLowerCase())
+  );
+
+
 
   const fetchEvents = async () => {
     try {
@@ -22,7 +30,15 @@ const StudentDashboard = () => {
 
   return (
     <div className="container mx-auto px-6 py-8">
-      <div className="flex justify-end mb-6"></div>
+      <div className="flex justify-start mb-6">
+        <input
+          type="text"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          placeholder="Search events..."
+          className="w-full max-w-md px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-400"
+        />
+      </div>
       <h1 className="text-5xl font-extrabold text-center text-pink-600 mb-4 tracking-wide drop-shadow">
         Student Dashboard
       </h1>
